@@ -1,0 +1,168 @@
+## Q1. Two Sum
+
+**Question**
+
+Given an array `nums` and a target value `target`, find two different indices `i` and `j` such that:
+
+`nums[i] + nums[j] = target`
+
+Return the indices of these two numbers.
+
+**Idea**
+
+- **Use a hash map** (`unordered_map`) to store numbers you have already seen while iterating through the array.
+- For each number `nums[i]`, compute the complement needed to reach the target:
+  - `complement = target - nums[i]`
+- Check if this complement has already appeared earlier in the map.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> numMap;
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if (numMap.find(complement) != numMap.end()) {
+                return {numMap[complement], i};
+            }
+            numMap[nums[i]] = i;
+        }
+        return {};
+    }
+};
+```
+
+---
+
+## Q20. Valid Parentheses
+
+**Question**
+
+Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
+
+An input string is valid if:
+
+- **Open brackets must be closed by the same type of brackets.**
+- **Open brackets must be closed in the correct order.**
+- **Every close bracket has a corresponding open bracket of the same type.**
+
+**Idea**
+
+- **Use a stack** to keep track of open brackets.
+- Traverse the string:
+  - Push open brackets onto the stack.
+  - For a closing bracket, check the top of the stack for the matching opening bracket.
+  - If it doesn’t match or the stack is empty, return `false`.
+- At the end, the stack must be empty for the string to be valid.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        for (char ch : s) {
+            if (ch == '(' || ch == '[' || ch == '{') {
+                st.push(ch);
+            } else {
+                if (st.empty()) {
+                    return false;
+                }
+                char top = st.top();
+                st.pop();
+                if (ch == ')' && top != '(') return false;
+                if (ch == ']' && top != '[') return false;
+                if (ch == '}' && top != '{') return false;
+            }
+        }
+        return st.empty();
+    }
+};
+```
+
+---
+
+## Q21. Merge Two Sorted Lists
+
+**Question**
+
+Merge two sorted linked lists and return the head of the merged sorted linked list.
+
+**Idea**
+
+- **Use a dummy and a temp pointer** to build the new list.
+- While both `list1` and `list2` are not null:
+  - Compare `list1->val` and `list2->val`.
+  - Attach the smaller node to `temp->next`, and move that list’s pointer forward.
+  - Move `temp` forward to `temp->next`.
+- After the loop, **attach the remaining nodes** of the non-empty list (either `list1` or `list2`).
+- Return `dummy->next` as the merged list head.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* dummy = new ListNode();
+        ListNode* temp = dummy;
+
+        while (list1 && list2) {
+            if (list1->val < list2->val) {
+                temp->next = list1;
+                list1 = list1->next;
+            } else {
+                temp->next = list2;
+                list2 = list2->next;
+            }
+            temp = temp->next;
+        }
+
+        if (list1) temp->next = list1;
+        if (list2) temp->next = list2;
+
+        return dummy->next;
+    }
+};
+```
+
+---
+
+## Q121. Best Time to Buy and Sell Stock
+
+**Question**
+
+Given an array `prices` where `prices[i]` is the price of a given stock on the \(i\)-th day, find the maximum profit you can achieve from a single buy and a single sell. You must buy before you sell. If you cannot achieve any profit, return `0`.
+
+**Idea**
+
+- **Track the minimum price so far** (`buy`) as you iterate through the array.
+- For each day \(i\):
+  - Update `buy` if `prices[i]` is smaller (better buying price).
+  - Otherwise, compute the profit `prices[i] - buy` and update `profit` if it is larger than the current maximum.
+- The final `profit` is the answer (or `0` if prices only go down).
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int buy = prices[0];
+        int profit = 0;
+
+        for (int i = 1; i < prices.size(); i++) {
+            if (prices[i] < buy) {
+                buy = prices[i];
+            } else {
+                profit = max(profit, prices[i] - buy);
+            }
+        }
+
+        return profit;
+    }
+};
+```
