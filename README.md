@@ -8,6 +8,10 @@
 - Q20. Valid Parentheses
 - Q21. Merge Two Sorted Lists
 - Q121. Best Time to Buy and Sell Stock
+- Q125. Valid Palindrome
+- Q226. Invert Binary Tree
+- Q242. Valid Anagram
+- Q704. Binary Search
 
 ### Medium
 
@@ -19,38 +23,49 @@
 
 ## C++ Notes
 
-- [RAII：机制、理念与工具](cpp-notes/raii_mechanics_tools.md)
-- [对象语义与生命周期体系](cpp-notes/value_semantics_system.md)
-- [语言基础与内存模型](cpp-notes/fundamental_and_memory_model.md)
-- [类型系统与多态体系](cpp-notes/type_system_and_polymorphism.md)
-- [C++ 编译与构建流程](cpp-notes/cpp_build_pipeline.md)
-- [STL 深度理解](cpp-notes/STL/stl_deep_understanding.md)
-- [Toy STL vs 标准库 STL：我们离 `std::` 还有多远？](cpp-notes/STL/stl_toy_vs_std.md)
+- [RAII: mechanisms, ideas, and tools](cpp-notes/raii_mechanics_tools.md)
+- [Value semantics and object lifetime system](cpp-notes/value_semantics_system.md)
+- [Language fundamentals and memory model](cpp-notes/fundamental_and_memory_model.md)
+- [Type system and polymorphism](cpp-notes/type_system_and_polymorphism.md)
+
+## Compiler
+
+- [C++ compile and build pipeline](cpp-notes/complier/cpp_build_pipeline.md)
+- [From source code to CPU: a compiler-centric view](cpp-notes/complier/compiler_to_cpu_mental_model.md)
+
+## STL
+
+- [Deep understanding of STL](cpp-notes/STL/stl_deep_understanding.md)
+- [Toy STL vs standard STL: how far are we from `std::`?](cpp-notes/STL/stl_toy_vs_std.md)
+
+## System
+
+- [gRPC: concepts, architecture, and usage](cpp-notes/system/grpc_overview.md)
 
 ### Concurrency Notes
 
-- [并发与系统级编程](cpp-notes/currency/concurrency_and_systems.md)
-- [并发实践：线程与同步细节](cpp-notes/currency/currency_specific.md)
-- [并发知识的四个层次概览](cpp-notes/currency/concurrency_layers_overview.md)
-- [并发经典同步问题](cpp-notes/currency/concurrency_classic_problems.md)
+- [Concurrency and systems programming](cpp-notes/currency/concurrency_and_systems.md)
+- [Practical concurrency: threads and synchronization](cpp-notes/currency/currency_specific.md)
+- [Four layers of concurrency knowledge](cpp-notes/currency/concurrency_layers_overview.md)
+- [Classic synchronization problems](cpp-notes/currency/concurrency_classic_problems.md)
 
 ### Infra / Performance Components
 
 - **Code & headers**
-  - [`MemoryPool` 头文件](codes/includes/memory_pool.h)
-  - [`ObjectPool` 头文件](codes/includes/object_pool.h)
-  - [`MemoryPoolSafe`（带 Debug 检查）](codes/includes/memory_pool_safe.h)
-  - [`ObjectPoolSafe`（带 Debug 检查 + RAII handle）](codes/includes/object_pool_safe.h)
-  - [`ThreadPool` 头文件](codes/includes/thread_pool.h)
-  - [`SpscRingBuffer` 头文件](codes/includes/spsc_ring_buffer.h)
-  - [性能对比示例与编译命令总览](codes/README.md)
+  - [`MemoryPool` header](codes/includes/memory_pool.h)
+  - [`ObjectPool` header](codes/includes/object_pool.h)
+  - [`MemoryPoolSafe` header (with debug checks)](codes/includes/memory_pool_safe.h)
+  - [`ObjectPoolSafe` header (debug checks + RAII handle)](codes/includes/object_pool_safe.h)
+  - [`ThreadPool` header](codes/includes/thread_pool.h)
+  - [`SpscRingBuffer` header](codes/includes/spsc_ring_buffer.h)
+  - [Example programs and build commands](codes/README.md)
 
 - **Notes**
-  - [MemoryPool：小对象内存池的工程用法](cpp-notes/infra/memory_pool.md)
-  - [ObjectPool：基于内存池的对象生命周期管理](cpp-notes/infra/object_pool.md)
-  - [ThreadPool：固定线程池与任务提交模型](cpp-notes/infra/thread_pool.md)
-  - [SPSC Ring Buffer：单生产者单消费者环形队列](cpp-notes/infra/spsc_ring_buffer.md)
-  - [MemoryPool vs ObjectPool：理念、职责与内存安全](cpp-notes/infra/mempool_vs_objectpool_safety.md)
+  - [MemoryPool: small-object pool in practice](cpp-notes/infra/memory_pool.md)
+  - [ObjectPool: object lifetime management on a pool](cpp-notes/infra/object_pool.md)
+  - [ThreadPool: fixed thread pool and task submission](cpp-notes/infra/thread_pool.md)
+  - [SPSC Ring Buffer: single-producer single-consumer queue](cpp-notes/infra/spsc_ring_buffer.md)
+  - [MemoryPool vs ObjectPool: design, responsibilities, and safety](cpp-notes/infra/mempool_vs_objectpool_safety.md)
 
 ### Data Structures (toy implementations)
 

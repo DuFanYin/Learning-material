@@ -166,3 +166,158 @@ public:
     }
 };
 ```
+
+## 125. Valid Palindrome
+
+**Question**
+
+Given a string `s`, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+**Idea**
+
+- First **clean** the string:
+  - Keep only alphanumeric characters.
+  - Convert everything to lowercase so that `'A'` and `'a'` are treated the same.
+- Then use **two pointers** from the start and end of the cleaned string and compare characters until they meet.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string cleaned = "";
+        for (char ch : s){
+            if (isalnum(ch)){
+                cleaned += tolower(ch);
+            }
+        }
+
+        int start = 0;
+        int end = cleaned.length() - 1;
+
+        while (start <= end){
+            if (cleaned[start] != cleaned[end]){
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+};
+```
+
+---
+
+## 226. Invert Binary Tree
+
+**Question**
+
+Invert a binary tree: swap the left and right subtree for every node.
+
+**Idea**
+
+- Use recursion:
+  - For each node, swap `left` and `right`.
+  - Then recursively invert the left and right subtrees.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if (root){
+            TreeNode* temp = root -> left;
+            root->left = root->right;
+            root->right = temp;
+            invertTree(root->left);
+            invertTree(root->right);
+        }
+        return root;
+    }
+};
+```
+
+
+
+## 242. Valid Anagram
+
+**Question**
+
+Given two strings `s` and `t`, check whether `t` is an anagram of `s`.
+
+**Idea**
+
+- Use a single length-26 frequency array to track letter counts:
+  - For each position `i`, increment the count for `s[i]` and decrement for `t[i]`.
+  - At the end, if all counts are zero, the two strings are anagrams.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        
+        vector<int> freq(26, 0);
+
+        for (int i=0 ; i < s.length() ; i++){
+            freq[s[i] - 'a']++;
+            freq[t[i] - 'a']--;
+        }
+
+        for (int i=0; i < freq.size(); i++){
+            if (freq[i] != 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
+```
+
+---
+
+## 704. Binary Search
+
+**Question**
+
+Find the index of `target` in a sorted array `nums` (or return `-1` if not found).
+
+**Idea**
+
+- Apply standard binary search on the sorted array using `low`, `high`, and `mid`.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+};
+```
