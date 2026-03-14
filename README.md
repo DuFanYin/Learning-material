@@ -12,6 +12,8 @@
 - Q226. Invert Binary Tree
 - Q242. Valid Anagram
 - Q704. Binary Search
+- Q733. Flood Fill
+- Q141. Linked List Cycle
 
 ### Medium
 

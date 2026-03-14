@@ -321,3 +321,82 @@ public:
     }
 };
 ```
+
+---
+
+## 733. Flood Fill
+
+**Question**
+
+Given a 2D image represented by a grid of integers, a starting pixel \((sr, sc)\), and a new color `color`, fill the entire connected region (4-directionally) of the starting pixel with the new color.
+
+**Idea**
+
+- Use **depth-first search (DFS)** from the starting cell.
+- The problem allows us to modify `image` in-place, so we don't need an extra `visited` structure.
+- Recurse to neighbors only if they are in bounds and have the same original color.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    void dfs(vector<vector<int>>& image, int i, int j, int val, int newColor) {
+        if (i < 0 || i >= image.size() || j < 0 || j >= image[0].size() || image[i][j] == newColor || image[i][j] != val) {
+            return;
+        }
+
+        image[i][j] = newColor;
+        dfs(image, i - 1, j, val, newColor);
+        dfs(image, i + 1, j, val, newColor);
+        dfs(image, i, j - 1, val, newColor);
+        dfs(image, i, j + 1, val, newColor);
+    }
+
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int val = image[sr][sc];
+        dfs(image, sr, sc, val, color);
+        return image;
+    }
+};
+```
+
+---
+
+## 141. Linked List Cycle
+
+**Question**
+
+Given the head of a linked list, determine if the list has a cycle in it. Return `true` if there is a cycle, and `false` otherwise. You do not need to find the node where the cycle begins.
+
+**Idea**
+
+- Use **two pointers**: a slow pointer that moves one step at a time and a fast pointer that moves two steps.
+- If there is a cycle, the fast pointer will eventually meet the slow pointer.
+- If the fast pointer reaches `NULL` (the end), then there is no cycle.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if (head == NULL || head->next == NULL) {
+            return false;
+        }
+
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+
+        while (fast != slow) {
+            if (fast->next == NULL || fast->next->next == NULL) {
+                return false;
+            }
+
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        return true;
+    }
+};
+```
