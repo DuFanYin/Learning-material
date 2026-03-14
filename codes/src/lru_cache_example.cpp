@@ -1,6 +1,11 @@
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 codes/src/lru_cache_example.cpp -o build/lru_cache_example
+// Run:
+//   ./build/lru_cache_example
+
 #include <iostream>
 #include <string>
-
 #include "../includes/lru_cache.h"
 
 int main() {

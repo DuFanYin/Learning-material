@@ -1,5 +1,10 @@
-#include <iostream>
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 codes/src/vector_example.cpp -o build/vector_example
+// Run:
+//   ./build/vector_example
 
+#include <iostream>
 #include "../includes/vector.h"
 
 int main() {

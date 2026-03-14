@@ -1,3 +1,9 @@
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 codes/src/object_pool_example.cpp -o build/object_pool_bench
+// Run:
+//   ./build/object_pool_bench
+
 #include <chrono>
 #include <cstddef>
 #include <iostream>

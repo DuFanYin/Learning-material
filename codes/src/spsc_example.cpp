@@ -1,3 +1,9 @@
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 -pthread codes/src/spsc_example.cpp -o build/spsc_bench
+// Run:
+//   ./build/spsc_bench
+
 #include <atomic>
 #include <chrono>
 #include <iostream>

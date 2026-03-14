@@ -1,6 +1,11 @@
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 codes/src/hash_table_example.cpp -o build/hash_table_example
+// Run:
+//   ./build/hash_table_example
+
 #include <iostream>
 #include <string>
-
 #include "../includes/hash_table.h"
 
 int main() {

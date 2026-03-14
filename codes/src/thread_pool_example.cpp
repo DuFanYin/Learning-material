@@ -1,3 +1,9 @@
+// Build:
+//   mkdir -p build
+//   clang++ -std=c++20 -O2 -pthread codes/src/thread_pool_example.cpp -o build/thread_pool_bench
+// Run:
+//   ./build/thread_pool_bench
+
 #include <chrono>
 #include <iostream>
 #include <future>
