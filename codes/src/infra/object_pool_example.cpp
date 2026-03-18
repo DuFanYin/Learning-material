@@ -1,6 +1,6 @@
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 codes/src/object_pool_example.cpp -o build/object_pool_bench
+//   clang++ -std=c++20 -O2 codes/src/infra/object_pool_example.cpp -o build/object_pool_bench
 // Run:
 //   ./build/object_pool_bench
 
@@ -10,7 +10,7 @@
 #include <memory>
 #include <vector>
 
-#include "../includes/object_pool.h"
+#include "../../includes/object_pool.h"
 
 struct Widget {
     int a;

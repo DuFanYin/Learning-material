@@ -1,27 +1,6 @@
-# LeetCode-cpp
+# Learning Materials
 
-## Solved Questions
-
-### Easy
-
-- Q1. Two Sum
-- Q20. Valid Parentheses
-- Q21. Merge Two Sorted Lists
-- Q121. Best Time to Buy and Sell Stock
-- Q125. Valid Palindrome
-- Q226. Invert Binary Tree
-- Q242. Valid Anagram
-- Q704. Binary Search
-- Q733. Flood Fill
-- Q141. Linked List Cycle
-
-### Medium
-
-- _TBD_
-
-### Hard
-
-- _TBD_
+A growing C++ and systems-programming notebook: LeetCode solutions, deeper notes, and small runnable experiments that evolve over time as I learn.
 
 ## C++ Notes
 
@@ -51,6 +30,7 @@
 - [Four layers of concurrency knowledge](cpp-notes/concurrency/concurrency_layers_overview.md)
 - [C++ memory order and reordering](cpp-notes/concurrency/memory_order.md)
 - [Classic synchronization problems](cpp-notes/concurrency/concurrency_classic_problems.md)
+- [Common concurrency challenges (checklist)](cpp-notes/concurrency/common_challenges.md)
 
 ### Infra / Performance Components (notes)
 
@@ -59,11 +39,17 @@
 - [ThreadPool: fixed thread pool and task submission](cpp-notes/infra/thread_pool.md)
 - [SPSC Ring Buffer: single-producer single-consumer queue](cpp-notes/infra/spsc_ring_buffer.md)
 - [MemoryPool vs ObjectPool: design, responsibilities, and safety](cpp-notes/infra/mempool_vs_objectpool_safety.md)
+- [Ring buffer vs mutex queue (in-depth)](cpp-notes/infra/rb_vs_mutex_indepth.md)
 
 ### Data Structures (toy implementations, notes)
 
 - [Memory model & value semantics background](cpp-notes/fundamental_and_memory_model.md)
 - [Vector / HashTable / LRUCache design notes](cpp-notes/STL/stl_deep_understanding.md)
+
+### OOP / Polymorphism
+
+- [OOP overall concepts](cpp-notes/oop/overall.md)
+- [Static vs dynamic polymorphism](cpp-notes/oop/static_vs_dynamic_polymorphism.md)
 
 ## Codes
 
@@ -80,12 +66,43 @@ codes/
 │   ├── hash_table.h
 │   └── lru_cache.h
 └── src/
-    ├── memory_pool_example.cpp        # new/delete vs MemoryPool
-    ├── object_pool_example.cpp        # std::make_unique vs ObjectPool
-    ├── thread_pool_example.cpp        # per-task threads vs ThreadPool
-    ├── spsc_example.cpp               # mutex queue vs SpscRingBuffer
-    ├── cache_alignment_example.cpp    # non-aligned vs cache-aligned counters
-    ├── vector_example.cpp             # toy Vector<T> usage
-    ├── hash_table_example.cpp         # toy HashTable<K, V> usage
-    └── lru_cache_example.cpp          # toy LRUCache<K, V> usage
+    ├── infra/
+    │   ├── memory_pool_example.cpp     # new/delete vs MemoryPool
+    │   ├── object_pool_example.cpp     # std::make_unique vs ObjectPool
+    │   ├── thread_pool_example.cpp     # per-task threads vs ThreadPool
+    │   └── spsc_example.cpp            # mutex queue vs SpscRingBuffer
+    ├── perf/
+    │   └── cache_alignment_example.cpp # non-aligned vs cache-aligned counters
+    ├── ds/
+    │   ├── vector_example.cpp          # toy Vector<T> usage
+    │   ├── hash_table_example.cpp      # toy HashTable<K, V> usage
+    │   └── lru_cache_example.cpp       # toy LRUCache<K, V> usage
+    ├── concurrency/
+    │   └── memory_order_example.cpp    # memory_order semantics demo
+    └── oop/
+        ├── dynamic_virtual_example.cpp       # virtual dispatch / runtime polymorphism
+        └── static_polymorphism_example.cpp   # template-based static polymorphism
 ```
+
+## Solved Questions
+
+### Easy
+
+- Q1. Two Sum
+- Q20. Valid Parentheses
+- Q21. Merge Two Sorted Lists
+- Q121. Best Time to Buy and Sell Stock
+- Q125. Valid Palindrome
+- Q226. Invert Binary Tree
+- Q242. Valid Anagram
+- Q704. Binary Search
+- Q733. Flood Fill
+- Q141. Linked List Cycle
+
+### Medium
+
+- _TBD_
+
+### Hard
+
+- _TBD_

@@ -1,7 +1,7 @@
 // Benchmark: cache-aligned vs non-aligned counters under false sharing.
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 -pthread codes/src/cache_alignment_example.cpp -o build/cache_align_bench
+//   clang++ -std=c++20 -O2 -pthread codes/src/perf/cache_alignment_example.cpp -o build/cache_align_bench
 // Run:
 //   ./build/cache_align_bench
 

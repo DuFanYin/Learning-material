@@ -1,6 +1,6 @@
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 codes/src/memory_pool_example.cpp -o build/memory_pool_bench
+//   clang++ -std=c++20 -O2 codes/src/infra/memory_pool_example.cpp -o build/memory_pool_bench
 // Run:
 //   ./build/memory_pool_bench
 
@@ -8,7 +8,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../includes/memory_pool.h"
+#include "../../includes/memory_pool.h"
 
 struct Foo {
     int x, y, z;

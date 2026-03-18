@@ -1,11 +1,11 @@
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 codes/src/vector_example.cpp -o build/vector_example
+//   clang++ -std=c++20 -O2 codes/src/ds/vector_example.cpp -o build/vector_example
 // Run:
 //   ./build/vector_example
 
 #include <iostream>
-#include "../includes/vector.h"
+#include "../../includes/vector.h"
 
 int main() {
     Vector<int> v;

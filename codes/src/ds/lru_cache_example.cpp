@@ -1,12 +1,12 @@
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 codes/src/lru_cache_example.cpp -o build/lru_cache_example
+//   clang++ -std=c++20 -O2 codes/src/ds/lru_cache_example.cpp -o build/lru_cache_example
 // Run:
 //   ./build/lru_cache_example
 
 #include <iostream>
 #include <string>
-#include "../includes/lru_cache.h"
+#include "../../includes/lru_cache.h"
 
 int main() {
     LRUCache<std::string, int> cache(2);

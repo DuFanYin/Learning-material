@@ -1,6 +1,6 @@
 // Build:
 //   mkdir -p build
-//   clang++ -std=c++20 -O2 -pthread codes/src/thread_pool_example.cpp -o build/thread_pool_bench
+//   clang++ -std=c++20 -O2 -pthread codes/src/infra/thread_pool_example.cpp -o build/thread_pool_bench
 // Run:
 //   ./build/thread_pool_bench
 
@@ -10,7 +10,7 @@
 #include <thread>
 #include <vector>
 
-#include "../includes/thread_pool.h"
+#include "../../includes/thread_pool.h"
 
 int main() {
     // CPU-bound toy workload to keep threads busy.
