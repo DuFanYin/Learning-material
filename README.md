@@ -47,6 +47,8 @@ A growing C++ and systems-programming notebook: LeetCode solutions, deeper notes
 - [ObjectPool: object lifetime management on a pool](cpp-notes/infra/object_pool.md)
 - [ThreadPool: fixed thread pool and task submission](cpp-notes/infra/thread_pool.md)
 - [SPSC Ring Buffer: single-producer single-consumer queue](cpp-notes/infra/spsc_ring_buffer.md)
+- [CPU cache efficiency for HFT (latency context)](cpp-notes/infra/cpu_cache_efficiency_hft.md)
+- [Cache organization: L1/L2/L3 and set-associative mapping](cpp-notes/infra/cache_organization_set_associative.md)
 - [MemoryPool vs ObjectPool: design, responsibilities, and safety](cpp-notes/infra/mempool_vs_objectpool_safety.md)
 - [Ring buffer vs mutex queue (in-depth)](cpp-notes/infra/rb_vs_mutex_indepth.md)
 
