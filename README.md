@@ -23,6 +23,15 @@ A growing C++ and systems-programming notebook: LeetCode solutions, deeper notes
 
 - [gRPC: concepts, architecture, and usage](cpp-notes/system/grpc_overview.md)
 
+## Operating System Notes
+
+- [C++ Program Lifecycle: From Executable to Page Fault](operating-system/cpp_program_lifecycle.md)
+- [Study plan](operating-system/study-plan.md)
+- [Week 1: Virtual Memory](operating-system/week1-virtual-memory.md)
+- [Week 2: Syscall Trap](operating-system/week2-syscall-trap.md)
+- [Week 3: Process Scheduling](operating-system/week3-process-scheduling.md)
+- [Week 4: Locking & IO](operating-system/week4-lock-io.md)
+
 ### Concurrency Notes
 
 - [Concurrency and systems programming](cpp-notes/concurrency/concurrency_and_systems.md)
