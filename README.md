@@ -119,6 +119,14 @@ codes/
 - Q169. Majority Element
 - Q67. Add Binary
 
+#### [leetcode/easy/part_03.md](leetcode/easy/part_03.md)
+
+- Q543. Diameter of Binary Tree
+- Q876. Middle of the Linked List
+- Q104. Maximum Depth of Binary Tree
+- Q217. Contains Duplicate
+- Q53. Maximum Subarray
+
 ### Medium
 
 - _TBD_
