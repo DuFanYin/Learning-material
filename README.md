@@ -93,6 +93,8 @@ codes/
 
 ### Easy
 
+#### [leetcode/easy/part_01.md](leetcode/easy/part_01.md)
+
 - Q1. Two Sum
 - Q20. Valid Parentheses
 - Q21. Merge Two Sorted Lists
@@ -103,6 +105,19 @@ codes/
 - Q704. Binary Search
 - Q733. Flood Fill
 - Q141. Linked List Cycle
+
+#### [leetcode/easy/part_02.md](leetcode/easy/part_02.md)
+
+- Q110. Balanced Binary Tree
+- Q232. Implement Queue using Stacks
+- Q235. Lowest Common Ancestor of a Binary Search Tree
+- Q278. First Bad Version
+- Q383. Ransom Note
+- Q70. Climbing Stairs
+- Q409. Longest Palindrome
+- Q206. Reverse Linked List
+- Q169. Majority Element
+- Q67. Add Binary
 
 ### Medium
 
