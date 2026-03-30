@@ -129,7 +129,12 @@ codes/
 
 ### Medium
 
-- _TBD_
+#### [leetcode/medium/part_01.md](leetcode/medium/part_01.md)
+
+- Q53. Maximum Subarray
+- Q57. Insert Interval
+- Q542. 01 Matrix
+- Q973. K Closest Points to Origin
 
 ### Hard
 
