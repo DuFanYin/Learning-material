@@ -131,36 +131,3 @@ public:
     }
 };
 ```
-
----
-
-## Q53. Maximum Subarray
-
-**Question**
-
-Given an integer array `nums`, find the contiguous subarray with the largest sum and return that sum.
-
-**Idea**
-
-- **Kadane’s algorithm:** scan left to right while maintaining the best sum ending at the current index.
-- Let `cur` be the maximum sum of a subarray that ends at `i`. Either extend the previous subarray (`cur + nums[i]`) or start fresh at `nums[i]` — take `max(nums[i], cur + nums[i])`.
-- Track `best` as the maximum `cur` seen so far.
-
-**Code (C++)**
-
-```cpp
-class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        int cur = nums[0];
-        int best = nums[0];
-
-        for (int i = 1; i < (int)nums.size(); i++) {
-            cur = max(nums[i], cur + nums[i]);
-            best = max(best, cur);
-        }
-
-        return best;
-    }
-};
-```

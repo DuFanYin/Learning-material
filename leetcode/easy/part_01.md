@@ -167,6 +167,8 @@ public:
 };
 ```
 
+---
+
 ## 125. Valid Palindrome
 
 **Question**
@@ -242,7 +244,7 @@ public:
 };
 ```
 
-
+---
 
 ## 242. Valid Anagram
 

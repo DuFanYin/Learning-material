@@ -129,12 +129,7 @@ public:
 };
 ```
 
-
-
-
-
-
-
+---
 
 ## Q973. K Closest Points to Origin
 
@@ -218,9 +213,148 @@ public:
 };
 ```
 
+---
 
+## Q3. Longest Substring Without Repeating Characters
 
+**Question**
 
+Given a string `s`, find the length of the longest substring without repeating characters.
 
+**Idea**
 
+- Use a sliding window `[left, right]`.
+- Maintain the last seen index of each character in an array of size 256.
+- When `s[right]` is repeated inside the current window, move `left` to `lastSeen + 1`.
+- Update answer with `right - left + 1` at each step.
 
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = (int)s.size();
+        if (n == 0) return 0;
+
+        vector<int> lastSeen(256, -1);
+        int left = 0;
+        int maxLength = 0;
+
+        for (int right = 0; right < n; right++) {
+            unsigned char ch = (unsigned char)s[right];
+            if (lastSeen[ch] != -1) {
+                left = max(left, lastSeen[ch] + 1);
+            }
+
+            lastSeen[ch] = right;
+            maxLength = max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+};
+```
+
+---
+
+## Q15. 3Sum
+
+**Question**
+
+Given an integer array `nums`, return all unique triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+The solution set must not contain duplicate triplets.
+
+**Idea**
+
+- Sort the array first.
+- Enumerate the first element `nums[i]`, then use two pointers (`left`, `right`) to find pairs summing to `-nums[i]`.
+- Skip duplicates:
+  - Skip duplicate `i` values.
+  - After finding a valid triplet, move `left`/`right` past equal values.
+- If `nums[i] > 0`, break early since later values are also non-negative.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        int n = (int)nums.size();
+        sort(nums.begin(), nums.end());
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) break;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int left = i + 1, right = n - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if (sum == 0) {
+                    res.push_back({nums[i], nums[left], nums[right]});
+
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+                    left++;
+                    right--;
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return res;
+    }
+};
+```
+
+---
+
+## Q102. Binary Tree Level Order Traversal
+
+**Question**
+
+Given the `root` of a binary tree, return the level order traversal of its nodes' values (from left to right, level by level).
+
+**Idea**
+
+- Use **BFS** with a queue.
+- For each round, process exactly `q.size()` nodes (the current level).
+- Collect values into `level`, then push children of each node into the queue.
+- Append `level` to the result.
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        if (!root) return res;
+
+        queue<TreeNode*> q;
+        q.push(root);
+
+        while (!q.empty()) {
+            int size = q.size();
+            vector<int> level;
+
+            for (int i = 0; i < size; i++) {
+                TreeNode* node = q.front();
+                q.pop();
+                level.push_back(node->val);
+
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+            }
+
+            res.push_back(level);
+        }
+        return res;
+    }
+};
+```

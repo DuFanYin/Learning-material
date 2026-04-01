@@ -125,7 +125,6 @@ codes/
 - Q876. Middle of the Linked List
 - Q104. Maximum Depth of Binary Tree
 - Q217. Contains Duplicate
-- Q53. Maximum Subarray
 
 ### Medium
 
@@ -135,6 +134,9 @@ codes/
 - Q57. Insert Interval
 - Q542. 01 Matrix
 - Q973. K Closest Points to Origin
+- Q3. Longest Substring Without Repeating Characters
+- Q15. 3Sum
+- Q102. Binary Tree Level Order Traversal
 
 ### Hard
 
