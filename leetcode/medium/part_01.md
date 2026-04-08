@@ -358,3 +358,207 @@ public:
     }
 };
 ```
+
+---
+
+## Q133. Clone Graph
+
+**Question**
+
+Given a reference of a node in a **connected undirected** graph, return a **deep copy (clone)** of the graph.
+
+Each node contains an integer `val` and a list of neighbor nodes.
+
+**Idea**
+
+- **DFS:** Use `unordered_map<Node*, Node*>` from original node to its clone. If the node was already cloned, return the existing clone. Otherwise create a new node, store it in the map, then recursively clone each neighbor and append the cloned neighbors to the clone's `neighbors` list.
+- **BFS:** Same map plus a queue. Start from the reference node: create its clone, enqueue the original. For each dequeued node, for every neighbor: if not in the map yet, create the clone and enqueue; always connect the current node's clone to the neighbor's clone via `neighbors`.
+
+**Code (C++) — DFS**
+
+```cpp
+class Solution {
+public:
+    unordered_map<Node*, Node*> nodeMap;
+
+    Node* cloneGraph(Node* node) {
+        if (!node) return nullptr;
+
+        if (nodeMap.count(node)) return nodeMap[node];
+
+        Node* clone = new Node(node->val);
+        nodeMap[node] = clone;
+
+        for (auto neighbor : node->neighbors) {
+            clone->neighbors.push_back(cloneGraph(neighbor));
+        }
+
+        return clone;
+    }
+};
+```
+
+**Code (C++) — BFS**
+
+```cpp
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (!node) return nullptr;
+
+        unordered_map<Node*, Node*> mp;
+        queue<Node*> q;
+
+        mp[node] = new Node(node->val);
+        q.push(node);
+
+        while (!q.empty()) {
+            Node* cur = q.front();
+            q.pop();
+
+            for (auto nei : cur->neighbors) {
+                if (!mp.count(nei)) {
+                    mp[nei] = new Node(nei->val);
+                    q.push(nei);
+                }
+                mp[cur]->neighbors.push_back(mp[nei]);
+            }
+        }
+
+        return mp[node];
+    }
+};
+```
+
+---
+
+## Q150. Evaluate Reverse Polish Notation
+
+**Question**
+
+You are given an array of strings `tokens` that represents an arithmetic expression in **Reverse Polish Notation (RPN)**.
+
+Evaluate the expression and return the integer result.
+
+**Idea**
+
+- Use a **stack of integers** for operands.
+- Scan `tokens` left to right:
+  - If the token is a number, push `stoi(token)`.
+  - If it is an operator, pop the **right** operand then the **left** operand, apply the operator, push the result. (Order matters for `-` and `/`.)
+- Integer division truncates toward zero (C++ `/` on `int` matches this).
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<int> st;
+
+        for (auto& t : tokens) {
+            if (t == "+" || t == "-" || t == "*" || t == "/") {
+                int b = st.top();
+                st.pop();
+                int a = st.top();
+                st.pop();
+
+                if (t == "+") st.push(a + b);
+                else if (t == "-") st.push(a - b);
+                else if (t == "*") st.push(a * b);
+                else st.push(a / b);
+            } else {
+                st.push(stoi(t));
+            }
+        }
+
+        return st.top();
+    }
+};
+```
+
+---
+
+## Q238. Product of Array Except Self
+
+**Question**
+
+Return an array `answer` such that `answer[i]` equals the product of all elements in `nums` except `nums[i]`.
+
+**Idea**
+
+- Build prefix products from left to right and store them in `answer`.
+- Keep a running suffix product from right to left.
+- Multiply prefix and suffix values to get the final result for each index.
+- This achieves `O(n)` time and `O(1)` extra space (excluding output array).
+
+**Code (C++)**
+
+```cpp
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ans(n, 1);
+
+        for (int i = 1; i < n; i++) {
+            ans[i] = ans[i - 1] * nums[i - 1];
+        }
+
+        int right = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            ans[i] *= right;
+            right *= nums[i];
+        }
+
+        return ans;
+    }
+};
+```
+
+---
+
+## Q155. Min Stack
+
+**Question**
+
+Design a stack that supports `push`, `pop`, `top`, and retrieving the minimum element in constant time.
+
+**Idea**
+
+- Store pairs in the stack: `{value, current_min}`.
+- `current_min` tracks the minimum value up to that stack position.
+- `getMin()` simply returns the second value of the top pair in `O(1)`.
+
+**Code (C++)**
+
+```cpp
+class MinStack {
+private:
+    stack<pair<int, int>> st;
+
+public:
+    MinStack() {}
+
+    void push(int val) {
+        if (st.empty()) {
+            st.push({val, val});
+        } else {
+            int current_min = min(val, st.top().second);
+            st.push({val, current_min});
+        }
+    }
+
+    void pop() {
+        st.pop();
+    }
+
+    int top() {
+        return st.top().first;
+    }
+
+    int getMin() {
+        return st.top().second;
+    }
+};
+```
